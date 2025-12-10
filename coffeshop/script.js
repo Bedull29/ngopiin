@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   })
+  
 
   // Intersection Observer for scroll animations
   const observerOptions = {
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Simple feedback animation
       const originalText = this.textContent
       this.textContent = "Added!"
-      this.style.backgroundColor = "#10b981"
+      this.style.backgroundColor = "#94b910ff"
 
       setTimeout(() => {
         this.textContent = originalText
@@ -129,9 +130,70 @@ document.addEventListener("DOMContentLoaded", () => {
   // Console log for debugging
   console.log("[v0] Coffee shop landing page loaded successfully")
   console.log("[v0] All interactive elements initialized")
+
 })
 
 // Utility function to check if element contains text
 HTMLElement.prototype.contains = function (text) {
   return this.textContent.includes(text)
+  }
+// === LOGIN SYSTEM ===
+const loginPopup = document.getElementById("loginPopup");
+const openLogin = document.getElementById("openLogin");
+const closeLogin = document.getElementById("closeLogin");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const loginMessage = document.getElementById("loginMessage");
+
+// Dummy akun
+const admin = {
+  username: "admin",
+  password: "123456"
+};
+
+// Buka popup
+openLogin.addEventListener("click", () => {
+  loginPopup.classList.remove("hidden");
+  loginPopup.classList.add("flex");
+});
+
+// Tutup popup
+closeLogin.addEventListener("click", () => {
+  loginPopup.classList.add("hidden");
+  loginPopup.classList.remove("flex");
+  loginMessage.textContent = "";
+});
+
+// Tombol login ditekan
+loginBtn.addEventListener("click", () => {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if (user === admin.username && pass === admin.password) {
+    localStorage.setItem("loggedIn", "yes");
+
+    // Tutup popup
+    loginPopup.classList.add("hidden");
+    loginPopup.classList.remove("flex");
+
+    // Ubah tombol
+    openLogin.classList.add("hidden");
+    logoutBtn.classList.remove("hidden");
+
+  } else {
+    loginMessage.textContent = "Username atau password salah!";
+  }
+});
+
+// Cek login otomatis
+if (localStorage.getItem("loggedIn") === "yes") {
+  openLogin.classList.add("hidden");
+  logoutBtn.classList.remove("hidden");
 }
+
+// Logout
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("loggedIn");
+  openLogin.classList.remove("hidden");
+  logoutBtn.classList.add("hidden");
+});
