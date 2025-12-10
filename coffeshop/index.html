@@ -43,6 +43,12 @@
 <button id="openLogin" class="btn-primary text-white px-6 py-2 rounded-full font-montserrat font-medium">
     Sign In
 </button>
+<button id="cartBtn" class="text-white relative mr-4">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.293 2.293c-.63.63-.184 1.707.707 1.707H19M7 13L5.4 5M16 17a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z"/>
+    </svg>
+    <span id="cartCount" class="absolute -top-2 -right-2 bg-coffee-orange text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+</button>
 
 <button id="logoutBtn" class="hidden text-white underline ml-4">
     Sign Out
@@ -101,9 +107,12 @@
             <p class="text-xl md:text-2xl text-white/90 mb-8 font-nunito leading-relaxed max-w-2xl mx-auto">
                 Segarkan diri kapan saja dengan cita rasa musim panas favorit Anda, ditambah energi untuk dorongan ekstra.
             </p>
-            <button class="btn-primary text-white px-8 py-4 rounded-full text-lg font-montserrat font-semibold hover-lift">
-                Shop Now
-            </button>
+<button onclick="document.querySelector('#order').scrollIntoView({behavior:'smooth'})"
+    class="btn-primary text-white px-8 py-4 rounded-full text-lg font-montserrat font-semibold hover-lift">
+    Shop Now
+</button>
+
+
         </div>
     </section>
 
@@ -152,7 +161,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="animate-on-scroll">
-                    <div class="bg-coffee-dark text-white px-6 py-2 rounded-full inline-block mb-6">
+   <div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll menu-item">
+
                         <span class="font-montserrat text-sm">Cappuccino • Espresso • Americano • Latte • Flat White</span>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-playfair font-bold text-coffee-dark mb-8">
@@ -192,6 +202,43 @@
     </section>
 
     <!-- Menu Section -->
+     <!-- ORDER SECTION -->
+<section id="order" class="py-20 bg-coffee-light">
+  <div class="max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-lg animate-on-scroll">
+    <h2 class="text-3xl font-playfair font-bold text-coffee-dark mb-6 text-center">
+      Order Kopi
+    </h2>
+
+    <form id="orderForm" class="space-y-5">
+      <div>
+        <label class="font-montserrat text-coffee-dark">Nama</label>
+        <input type="text" name="nama" class="w-full border p-3 rounded-lg" required>
+      </div>
+
+      <div>
+        <label class="font-montserrat text-coffee-dark">Pilih Kopi</label>
+        <select name="menu" class="w-full border p-3 rounded-lg" required>
+          <option value="Espresso">Espresso</option>
+          <option value="Cappuccino">Cappuccino</option>
+          <option value="Americano">Americano</option>
+          <option value="Latte">Latte</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="font-montserrat text-coffee-dark">Jumlah</label>
+        <input type="number" name="jumlah" min="1" class="w-full border p-3 rounded-lg" required>
+      </div>
+
+      <button type="submit" class="btn-primary text-white w-full py-3 rounded-full font-montserrat text-lg">
+        Pesan Sekarang
+      </button>
+    </form>
+
+    <div id="orderResult" class="hidden mt-5 p-4 rounded-lg bg-green-100 border border-green-400 text-green-800 text-center"></div>
+  </div>
+</section>
+
     <section class="tilted-section py-20 bg-coffee-primary relative">
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate-on-scroll">
@@ -205,47 +252,51 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Menu Item 1 -->
-                <div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll">
+<div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll menu-item">
+
                     <img src="https://images.unsplash.com/photo-1611691934391-5a8805e0bd1a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXNwcmVzc298ZW58MHwyfDB8fHww" alt="Espresso" class="w-full h-48 object-cover rounded-xl mb-4">
                     <h3 class="text-xl font-playfair font-semibold text-coffee-dark mb-2">Espresso</h3>
                     <p class="text-coffee-dark/70 mb-4">Rich and bold espresso shot</p>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-coffee-orange">Rp22k</span>
-                        <button class="bg-coffee-primary text-white px-4 py-2 rounded-full hover:bg-coffee-secondary transition-colors">
-                            Add to Cart
-                        </button>
+<button class="bg-coffee-primary text-white px-4 py-2 rounded-full addToCartBtn">
+    Add to Cart
+</button>
+
                     </div>
                 </div>
                 
                 <!-- Menu Item 2 -->
-                <div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll">
+                    <div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll menu-item">
                     <img src="https://images.unsplash.com/photo-1710173472469-9d28e977914c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2FwcHVjaW5vfGVufDB8MnwwfHx8MA%3D%3D" alt="Cappuccino" class="w-full h-48 object-cover rounded-xl mb-4">
                     <h3 class="text-xl font-playfair font-semibold text-coffee-dark mb-2">Cappuccino</h3>
                     <p class="text-coffee-dark/70 mb-4">Perfect balance of espresso and steamed milk</p>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-coffee-orange">Rp25k</span>
-                        <button class="bg-coffee-primary text-white px-4 py-2 rounded-full hover:bg-coffee-secondary transition-colors">
-                            Add to Cart
-                        </button>
+<button class="bg-coffee-primary text-white px-4 py-2 rounded-full addToCartBtn">
+    Add to Cart
+</button>
+
                     </div>
                 </div>
                 
                 <!-- Menu Item 3 -->
-                <div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll">
+<div class="bg-white rounded-2xl p-6 hover-lift animate-on-scroll menu-item">
+
                     <img src="https://images.unsplash.com/photo-1630021439100-74a32ab42d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGF0dGV8ZW58MHwyfDB8fHww" alt="Latte" class="w-full h-48 object-cover rounded-xl mb-4">
                     <h3 class="text-xl font-playfair font-semibold text-coffee-dark mb-2">Latte</h3>
                     <p class="text-coffee-dark/70 mb-4">Smooth espresso with steamed milk and foam art</p>
                     <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-coffee-orange">Rp28k</span>
-                        <button class="bg-coffee-primary text-white px-4 py-2 rounded-full hover:bg-coffee-secondary transition-colors">
-                            Add to Cart
-                        </button>
+<button class="bg-coffee-primary text-white px-4 py-2 rounded-full addToCartBtn">
+    Add to Cart
+</button>
+
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
     </section>
-
     <!-- Footer -->
     <footer id="contact" class="bg-coffee-dark text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,7 +356,7 @@
 
     <!-- JavaScript -->
      <!-- LOGIN POPUP -->
-<div id="loginPopup" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[999]">
+<div id="loginPopup" class="fixed inset-0 bg-black/60 hidden items-center justify-center  z-[999]">
     <div class="bg-white p-8 rounded-2xl w-96 shadow-xl text-center">
         <h2 class="text-2xl font-bold mb-4">Login</h2>
 
@@ -327,8 +378,54 @@
         </button>
     </div>
 </div>
+<!-- CART SIDEBAR -->
+<div id="cartSidebar" class="fixed top-0 right-0 w-80 bg-white h-full shadow-xl transform translate-x-full transition-all duration-300 z-[999]">
+    <div class="p-5 border-b flex justify-between items-center">
+        <h2 class="text-xl font-bold">Keranjang</h2>
+        <button id="closeCart" class="text-gray-600 text-2xl">&times;</button>
+    </div>
+
+    <div id="cartItems" class="p-5 space-y-4 max-h-[65%] overflow-y-auto"></div>
+
+    <div class="p-5 border-t">
+        <div class="flex justify-between mb-4">
+            <span class="font-semibold">Total:</span>
+            <span id="cartTotal" class="font-bold text-coffee-orange text-xl">Rp0</span>
+        </div>
+        <button id="checkoutBtn" class="w-full bg-coffee-primary text-white py-3 rounded-lg hover:bg-coffee-secondary transition">Checkout</button>
+    </div>
+</div>
+<!-- CHECKOUT POPUP (REPLACE your existing checkout popup with this block) -->
+<div id="checkoutPopup" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[999]">
+    <div class="bg-white w-96 p-6 rounded-2xl shadow-xl">
+        <h2 class="text-2xl font-bold mb-4">Checkout</h2>
+
+        <div id="checkoutList" class="mb-4 text-gray-700"></div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">Nama</label>
+            <input id="checkoutName" type="text" placeholder="Nama penerima" class="w-full border p-2 rounded mt-1">
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700">No. HP (contoh: 081234567890)</label>
+            <input id="checkoutPhone" type="text" placeholder="08xxxxxxxx" class="w-full border p-2 rounded mt-1">
+        </div>
+
+        <div class="text-xl font-bold mb-4">
+            Total: <span id="checkoutTotal" class="text-coffee-orange"></span>
+        </div>
+
+        <button id="placeOrder" class="w-full bg-coffee-primary text-white py-2 rounded-lg">Place Order via WhatsApp</button>
+
+        <button id="closeCheckout" class="mt-4 text-gray-600 underline w-full">Cancel</button>
+    </div>
+</div>
+
+
 
     <script src="script.js"></script>
+    
 
 </body>
 </html>
