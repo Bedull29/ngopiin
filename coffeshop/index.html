@@ -31,7 +31,7 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" class="text-white hover:text-coffee-orange transition-colors duration-300 font-montserrat font-medium">Home</a>
-                        <a href="#shop" class="text-white hover:text-coffee-orange transition-colors duration-300 font-montserrat font-medium">Shop</a>
+                        <a href="#ourmenu" class="text-white hover:text-coffee-orange ...">Shop</a>
                         <a href="#about" class="text-white hover:text-coffee-orange transition-colors duration-300 font-montserrat font-medium">About</a>
                         <a href="#blog" class="text-white hover:text-coffee-orange transition-colors duration-300 font-montserrat font-medium">Blog</a>
                         <a href="#contact" class="text-white hover:text-coffee-orange transition-colors duration-300 font-montserrat font-medium">Contact</a>
@@ -47,40 +47,59 @@
     <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.293 2.293c-.63.63-.184 1.707.707 1.707H19M7 13L5.4 5M16 17a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z"/>
     </svg>
-    <span id="cartCount" class="absolute -top-2 -right-2 bg-coffee-orange text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
-</button>
-
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-coffee-orange text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+    </button>
 <button id="logoutBtn" class="hidden text-white underline ml-4">
-    Sign Out
-</button>
+            Sign Out
+        </button>
 
-
-</button>
-
-                </div>
+     </button>
+</div>
                 
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white hover:text-coffee-orange">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+<div class="md:hidden flex items-center gap-4">
+
+    <!-- CART BUTTON MOBILE (di navbar luar) -->
+    <button id="cartBtnMobileTop" class="text-white relative">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M16 17a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        <span id="cartCountMobileTop" class="absolute -top-2 -right-2 bg-coffee-orange text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+    </button>
+
+    <!-- HAMBURGER MENU -->
+    <button id="mobile-menu-btn" class="text-white hover:text-coffee-orange">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+    </div>
+</div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-coffee-primary">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="text-white block px-3 py-2 font-montserrat">Home</a>
-                <a href="#shop" class="text-white block px-3 py-2 font-montserrat">Shop</a>
-                <a href="#about" class="text-white block px-3 py-2 font-montserrat">About</a>
-                <a href="#blog" class="text-white block px-3 py-2 font-montserrat">Blog</a>
-                <a href="#contact" class="text-white block px-3 py-2 font-montserrat">Contact</a>
-                <button class="btn-primary text-white px-6 py-2 rounded-full font-montserrat font-medium ml-3 mt-2">
-                    Sign In
-                </button>
+<div id="mobile-menu" class="md:hidden hidden bg-coffee-primary">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#home" class="text-white block px-3 py-2">Home</a>
+        <a href="#ourmenu" class="text-white block px-3 py-2">Shop</a>
+        <a href="#about" class="text-white block px-3 py-2">About</a>
+        <a href="#blog" class="text-white block px-3 py-2">Blog</a>
+        <a href="#contact" class="text-white block px-3 py-2">Contact</a>
+        <button id="openLoginMobile" class="btn-primary text-white px-6 py-2 rounded-full font-montserrat font-medium ml-3 mt-2">
+             Sign In
+        </button>
+        <button id="logoutBtnMobile" class="hidden text-white underline px-3 py-2">
+             Sign Out
+        </button>
+
+
+                <button id="cartBtnMobile" class="text-white relative flex items-center gap-2 px-3 py-2">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M16 17a2 2 0 11-4 0 2 2 0 014 0zm6 0a2 2 0 11-4 0 2 2 2 0z"/>
+    </svg>
+    Cart
+    <span id="cartCountMobile" class="bg-coffee-orange text-white text-xs px-2 py-1 rounded-full">0</span>
+</button>
+
             </div>
         </div>
     </nav>
@@ -239,7 +258,7 @@
   </div>
 </section>
 
-    <section class="tilted-section py-20 bg-coffee-primary relative">
+<section id="ourmenu" class="tilted-section py-20 bg-coffee-primary relative">
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 animate-on-scroll">
                 <h2 class="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
@@ -340,16 +359,16 @@
                 <div>
                     <h4 class="text-lg font-montserrat font-semibold mb-4">Contact Info</h4>
                     <div class="space-y-2 text-white/80">
-                        <p>Jl. Berkah sejati</p>
-                        <p>Jakbar, Cengkareng</p>
-                        <p>Phone: 6285603384492</p>
-                        <p>Email: ngopiin@shop.com</p>
+                        <p>123 Coffee Street</p>
+                        <p>City, State 12345</p>
+                        <p>Phone: (555) 123-4567</p>
+                        <p>Email: hello@coffee.com</p>
                     </div>
                 </div>
             </div>
             
             <div class="border-t border-white/20 mt-12 pt-8 text-center">
-                <p class="text-white/60">&copy; 2025 Coffee Shop. All rights reserved.</p>
+                <p class="text-white/60">&copy; 2024 Coffee Shop. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -429,4 +448,3 @@
 
 </body>
 </html>
-
