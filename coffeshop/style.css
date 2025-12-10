@@ -142,6 +142,8 @@ html {
   .tilted-section::before {
     transform: skewY(-1deg);
   }
-
+}
+#loginPopup.flex {
+  display: flex !important;
 }
 
