@@ -27,6 +27,54 @@ document.addEventListener("DOMContentLoaded", () => {
       mobileMenu.classList.add("hidden")
     })
   })
+  // === SIGN IN MOBILE ===
+const openLoginMobile = document.getElementById("openLoginMobile");
+
+if (openLoginMobile) {
+    openLoginMobile.addEventListener("click", () => {
+        loginPopup.classList.remove("hidden");
+        loginPopup.classList.add("flex");
+    // Mobile version update after login
+openLoginMobile.classList.add("hidden");
+logoutBtnMobile.classList.remove("hidden");
+
+openLogin.classList.add("hidden");
+logoutBtn.classList.remove("hidden");
+
+        // Tutup menu mobile otomatis
+        document.getElementById("mobile-menu").classList.add("hidden");
+    });
+}
+// === LOGOUT MOBILE ===
+const logoutBtnMobile = document.getElementById("logoutBtnMobile");
+
+if (logoutBtnMobile) {
+    logoutBtnMobile.addEventListener("click", () => {
+        localStorage.removeItem("loggedIn");
+
+        // Tampilkan Sign In kembali
+        openLogin.classList.remove("hidden");
+        logoutBtn.classList.add("hidden");
+
+        // Mobile juga berubah
+        openLoginMobile.classList.remove("hidden");
+        logoutBtnMobile.classList.add("hidden");
+openLogin.classList.add("hidden");
+logoutBtn.classList.remove("hidden");
+
+        // Tutup menu mobile setelah logout
+        document.getElementById("mobile-menu").classList.add("hidden");
+    });
+}
+
+// === CART BUTTON MOBILE (TOP NAVBAR) ===
+const cartBtnMobileTop = document.getElementById("cartBtnMobileTop");
+
+if (cartBtnMobileTop) {
+    cartBtnMobileTop.addEventListener("click", () => {
+        document.getElementById("cartSidebar").classList.remove("translate-x-full");
+    });
+}
 
   // Smooth scrolling for navigation links
   const navLinks = document.querySelectorAll('a[href^="#"]')
@@ -187,9 +235,21 @@ loginBtn.addEventListener("click", () => {
 
 // Cek login otomatis
 if (localStorage.getItem("loggedIn") === "yes") {
-  openLogin.classList.add("hidden");
-  logoutBtn.classList.remove("hidden");
+    openLogin.classList.add("hidden");
+    logoutBtn.classList.remove("hidden");
+
+    // MOBILE UI
+    openLoginMobile.classList.add("hidden");
+    logoutBtnMobile.classList.remove("hidden");
+} else {
+    openLogin.classList.remove("hidden");
+    logoutBtn.classList.add("hidden");
+
+    // MOBILE UI
+    openLoginMobile.classList.remove("hidden");
+    logoutBtnMobile.classList.add("hidden");
 }
+
 
 // Logout
 logoutBtn.addEventListener("click", () => {
@@ -200,6 +260,35 @@ logoutBtn.addEventListener("click", () => {
 
 // Ganti seluruh isi script.js dengan yang ini
 // Coffee shop - improved cart + checkout + Whatsapp order
+// === FIX MOBILE NAVBAR ===
+document.addEventListener("DOMContentLoaded", () => {
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
+
+    // Tutup menu ketika klik link
+    document.querySelectorAll("#mobile-menu a").forEach(link => {
+        link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+        });
+    });
+});
+// === Cart Button Mobile ===
+const cartBtnMobile = document.getElementById("cartBtnMobile");
+const cartSidebar = document.getElementById("cartSidebar");
+
+if (cartBtnMobile) {
+    cartBtnMobile.addEventListener("click", () => {
+        cartSidebar.classList.remove("translate-x-full");
+        // Close mobile menu automatically
+        document.getElementById("mobile-menu").classList.add("hidden");
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   // --- NAV / UI BASIC ---
@@ -287,12 +376,15 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("cart_v1", JSON.stringify(cart));
   }
 
-  function updateCartCount() {
-    // show total items (sum of qty)
-    const count = cart.reduce((s, it) => s + (it.qty || 0), 0);
-    const el = document.getElementById("cartCount");
-    if (el) el.textContent = String(count);
-  }
+function updateCartCount() {
+  const count = cart.reduce((s, it) => s + (it.qty || 0), 0);
+  const desktop = document.getElementById("cartCount");
+  const mobile = document.getElementById("cartCountMobile");
+const mobileTop = document.getElementById("cartCountMobileTop");
+if (mobileTop) mobileTop.textContent = count;
+  if (desktop) desktop.textContent = count;
+  if (mobile) mobile.textContent = count;
+}
 
   function updateCartUI() {
     const container = document.getElementById("cartItems");
