@@ -15,7 +15,7 @@
 
 /* Color variables */
 :root {
-  --coffee-primary: hsl(71, 68%, 32%);
+  --coffee-primary: #455016;
   --coffee-secondary: #1a3009;
   --coffee-orange: #ff8c42;
   --coffee-light: #f5f1eb;
@@ -144,3 +144,4 @@ html {
   }
 
 }
+
